@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>id-jp</title>
   </head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     fetch("json.json")
       .then((response) => response.json())
@@ -14,16 +16,17 @@
       .catch((error) => console.error("Error:", error));
   </script>
   <body>
-    <div id="data-container"></div>
+    <h1>Data JSON:</h1>
+    <ul id="json-data"></ul>
 
     <script>
-      fetch("data.json")
-        .then((response) => response.json())
-        .then((data) => {
-          // Menampilkan data JSON di dalam elemen dengan id "data-container"
-          document.getElementById("data-container").innerText = JSON.stringify(data);
-        })
-        .catch((error) => console.error("Error:", error));
+      $(document).ready(function () {
+        $.getJSON("json.json", function (data) {
+          $.each(data, function (key, value) {
+            $("#json-data").append("<li>" + value.romaji + " - " + value.indo + "</li>");
+          });
+        });
+      });
     </script>
   </body>
 </html>
