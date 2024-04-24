@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>id-jp</title>
+  </head>
+  <script>
+    fetch("json.json")
+      .then((response) => response.json())
+      .then((data) => {
+        // Lakukan sesuatu dengan data JSON yang telah diambil
+        console.log(data);
+      })
+      .catch((error) => console.error("Error:", error));
+  </script>
+  <body>
+    <div id="data-container"></div>
+
+    <script>
+      fetch("data.json")
+        .then((response) => response.json())
+        .then((data) => {
+          // Menampilkan data JSON di dalam elemen dengan id "data-container"
+          document.getElementById("data-container").innerText = JSON.stringify(data);
+        })
+        .catch((error) => console.error("Error:", error));
+    </script>
+  </body>
+</html>
